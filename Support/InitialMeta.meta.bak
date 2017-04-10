@@ -1,0 +1,59 @@
+{
+	"core:global": {
+		"core:datatype": "rf32_le",
+		"core:datapath": "foo.data",
+		"core:version": "1.0.0",
+		"core:sha512": "69a014f8855058d25b30b1caf4f9d15bb7b38afa26e28",
+		"core:offset": 0,
+		"core:description": "Testing SigMF",
+		"core:author": "Alan",
+		"core:date": "2017-04-03",
+		"core:license": "None",
+		"core:hw": "Signal Generator data",
+		"PFP:label": 1,
+		"PFP:sequence": 100
+	},
+	"core:capture": [{
+		"core:sample_start": 0,
+		"core:sample_rate": 25000.00,
+		"core:time": "2017-02-01T11:33:17,053240428+01:00",
+		"PFP:channel": 0,
+		"PFP:channel_desc": "+DC",
+		"PFP:trigger_sample": 0,
+		"PFP:length": 32000,
+		"PFP:sensor_id": "Sig Gen",
+		"PFP:filter": "none",
+		"PFP:amplifier": "none",
+		"PFP:gain": 1
+	}],
+
+
+	"core:annotations": [{
+		"core:sample_start": 0,
+		"core:sample_count": 1000,
+		"GMU:comment": "My Comments go here",
+		"GMU:xyz" :"something"
+	},
+	{
+		"core:sample_start": 1000,
+		"core:sample_count": 1000,
+		"NS:attribute1": "something2"
+	}],
+	"PFP:source":[{
+		"PFP:customer": "XYZ",
+		"PFP:device_id": "XYZ-Router1",
+		"PFP:device_maker": "maker A",
+		"PFP:device_model": "model 1",
+		"PFP:device_serial": "serial # 1",
+		"PFP:device_fw": "fw A",
+		"PFP:device_fw_version": "fw version 1",
+		"PFP:device_bd_revision": "bd revision 1",
+		"PFP:device_desc": "RouterInRoom312",
+		"PFP:dad_id": "UniqueIDRP1",
+		"PFP:dad_tr_edge": "falling",
+		"PFP:dad_tr_level": 2.0,
+		"PFP:dad_tr_range": "1.23-3.45",
+		"PFP:dad_tr_script": "some script",
+		"PFP:dad_desc": "RP"
+	}]
+}
