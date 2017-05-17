@@ -121,6 +121,8 @@ classdef RPLoggerDataCollectionMain < handle
             if (obj.CurrentTrace < obj.TotalTraces && ~isempty(obj.pMonLogger.Fd))
                 obj.next();
             else
+                uiwait(warndlg({'Data Collection Completed.';'Press OK to continue.'}, ...
+                     'modal'));
                 callback(code, msg, true);
                 set(handles.uicontrol_StartCapture, 'String', 'Start Capture');
                 handles.uipanel_Waveform.Title = 'Waveform';

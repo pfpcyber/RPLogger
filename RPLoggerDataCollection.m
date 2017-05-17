@@ -728,7 +728,8 @@ else
     end
     
     
-    
+    uiwait(warndlg({'Please set the device to the desired  run state.';'Press OK to continue.'}, ...
+                            'Set Run State', 'modal'));
     disableAll(handles);
     handles.uipanel_Waveform.Title = 'Completed: 0%';
     uiwaitbar(handles.waitbar, 'Label', 'Waiting for Trigger');
