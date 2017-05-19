@@ -49,8 +49,8 @@ S1.DataCollectionParams.NumTraces = Config.daq_global.NumTraces;
 S1.DataCollectionParams.NumStates = Config.daq_global.NumStates;
 
 %% [DataPaths]
-S1.DataPaths.DataStorage = Config.daq_global.DataPath; 
-S1.DataPaths.SigMF = Config.daq_global.InitialSigMF;
+S1.Paths.DataStore = Config.daq_global.DataPath; 
+S1.Paths.SigMF = Config.daq_global.InitialSigMF;
         
 end
 

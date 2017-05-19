@@ -22,7 +22,8 @@ Trigger.TriggerConfig string
 Trigger.AutoTriggerTimeoutms int
 Paths.UserDefinedRootPath string
 Paths.StoreLinuxRoot string
-Paths.Analytics string
+Paths.DataStore string
+Paths.SigMF string
 Paths.Traces string
 Paths.STFTs string
 Paths.Signatures string

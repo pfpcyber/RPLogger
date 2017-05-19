@@ -68,9 +68,9 @@ try
     % AutoTriggerTimeoutms checked by scope-specific function
     
     % [Paths]
-    names = fieldnames(S1.DataPaths);
+    names = fieldnames(S1.Paths);
     for i=1:length(names)
-        S1.Paths.(names{i}) = checkPath(S1, 'DataPaths', names{i});
+        S1.Paths.(names{i}) = checkPath(S1, 'Paths', names{i});
     end
     
     

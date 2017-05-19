@@ -174,8 +174,8 @@ set(panel_cap, 'Visible', 'on');
 
 % Paths
 panel_paths = make_panel(h1, 'File Paths', [ logo_pos(1) 0 3.5 0], 'Inches');
-add_uicontrol(panel_paths, 'Data Store:', 'edit', { S1.DataPaths.DataStorage }, 'Path Data Store');
-add_uicontrol(panel_paths, 'Initial SigMF :', 'edit', { S1.DataPaths.SigMF }, 'PathToInitialSigMF');
+add_uicontrol(panel_paths, 'Data Store:', 'edit', { S1.Paths.DataStore }, 'Paths.DataStore');
+add_uicontrol(panel_paths, 'Initial SigMF :', 'edit', { S1.Paths.SigMF }, 'Paths.SigMF');
 finalize_layout(panel_paths, metrics);
 
 set(panel_paths, 'Visible', 'off');
@@ -707,19 +707,19 @@ else
     KillPing();
     PingPmon(pmonLogger);
     % Handle non-empty Traces folder.
-    if exist(S2.DataPaths.DataStorage, 'dir')% || exist(S2.DataPaths.SigMF, 'dir')
+    if exist(S2.Paths.DataStore, 'dir')% || exist(S2.Paths.SigMF, 'dir')
         disableAll(handles);
-        d1 = dir(S2.DataPaths.DataStorage);
+        d1 = dir(S2.Paths.DataStore);
         d1 = { d1.name };
         d1(logical(~cellfun(@isempty, regexp(d1, '^\.{1,2}$', 'start')))) = []; % filter out '.' and '..'
         if ~isempty(d1)
-            msg = sprintf('Trace files found in %s.\n\nOK to delete?', S2.DataPaths.DataStorage);
+            msg = sprintf('Trace files found in %s.\n\nOK to delete?', S2.Paths.DataStore);
             button = questdlg(msg,  'Folder Not Empty', ...
                 'Yes', 'Cancel', 'Cancel');
             switch (button)
                 case 'Yes'
-                    [status, message, messageid] = rmdir(S2.DataPaths.DataStorage, 's');
-                    mkdir(S2.DataPaths.DataStorage);
+                    [status, message, messageid] = rmdir(S2.Paths.DataStore, 's');
+                    mkdir(S2.Paths.DataStore);
                 otherwise
                     enableAll(handles);
                     return
@@ -761,16 +761,15 @@ fieldname = data('FieldName');
 if (isempty(strfind(fieldname, '.')))
     eval(sprintf('%s_callback(hObject, eventdata)', matlab.lang.makeValidName(fieldname)));
 else
-    RPLoggerDefaultHandler(hObject, eventdata);
-    pmonLogger = getappdata(0, 'pMonLogger');
-    S1 = getappdata(0,'S1');
-    S2 = getappdata(0,'S2');
-    
-    if (~isequal(S1, S2))
-        pmonLogger.Initialized = false;
-        setappdata(0,'pMonLogger',pmonLogger);
-    end
-    
+RPLoggerDefaultHandler(hObject, eventdata);
+pmonLogger = getappdata(0, 'pMonLogger');
+S1 = getappdata(0,'S1');
+S2 = getappdata(0,'S2');
+
+if (~isequal(S1, S2))
+    pmonLogger.Initialized = false;
+    setappdata(0,'pMonLogger',pmonLogger);
+end
     
 end
 

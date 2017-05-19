@@ -31,17 +31,17 @@ classdef RPLoggerDataCollectionMain < handle
             obj.TraceIdx = 0;
             
             try
-                if exist(obj.S1.DataPaths.SigMF, 'file') == 2
-                    obj.SigMF = loadjson(obj.S1.DataPaths.SigMF);
-%                     SigMF_Text = fileread(obj.S1.DataPaths.SigMF);
+                if exist(obj.S1.Paths.SigMF, 'file') == 2
+                    obj.SigMF = loadjson(obj.S1.Paths.SigMF);
+%                     SigMF_Text = fileread(obj.S1.Paths.SigMF);
 %                     obj.SigMF = jsondecode(SigMF_Text);
 
                 end
             catch err
-                uiwait(msgbox(sprintf('%s\n\n%s',err.message,['File not found: %s.', obj.S1.DataPaths.SigMF])));
+                uiwait(msgbox(sprintf('%s\n\n%s',err.message,['File not found: %s.', obj.S1.Paths.SigMF])));
             end
-            tmp = regexp(obj.S1.DataPaths.SigMF, '/|\','split');
-            obj.S1.DataPaths.SigMF = strrep(obj.S1.DataPaths.SigMF,tmp{end},'');
+            tmp = regexp(obj.S1.Paths.SigMF, '/|\','split');
+            obj.S1.Paths.SigMF = strrep(obj.S1.Paths.SigMF,tmp{end},'');
 
 
             if obj.pMonLogger.acquire() < 0
@@ -105,10 +105,10 @@ classdef RPLoggerDataCollectionMain < handle
             
             
             DataFileName = [FileName '.data']; % Add .data extension
-            DataFullPath = [obj.S1.DataPaths.DataStorage DataFileName];
+            DataFullPath = [obj.S1.Paths.DataStore DataFileName];
             MetaFileName = [FileName '.meta'];%  Add .meta extension
             
-            MetaFullPath = [obj.S1.DataPaths.DataStorage MetaFileName];
+            MetaFullPath = [obj.S1.Paths.DataStore MetaFileName];
             
             obj.SigMF.core_0x3A_global.core_0x3A_datapath = DataFileName;
             
